@@ -1,0 +1,46 @@
+<!-- 
+//fetch is used to make the backend -background calls what it mainly does is that it can make several types
+//of request to the backend it can make GET,POST,PUT,DELETE requests to the backend..
+//Fetch generally is an Async operation and can be called and maybe resolved in various ways 
+//We can suse normal promises as well -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    LinkedIn
+    <div id="post"></div>
+    <script>
+         function getRecentPost(){
+            fetch("https://jsonplaceholder.typicode.com/posts/1",{
+                method:"GET"
+            })
+            //ye fetch kaa syntax hota hai jaise fetch canhave multiple argumnets jaisa systummm like 
+            //firstly wo ek URL lega jo ki btaega ki fetch krna kahan se hai and then it has bunch of options regarding method 
+            //that we want to use like GET,POST,PUT,DELETE and all then we have other  thing like encoding nd stuff
+                .then(response=>{
+                    return response.json();
+                })
+                //so as fetch is an ASynchronous task so it return a promise and when the promise is resolved it returns us a respose
+                //that response is not in jSON format so we use .then(response=> return respone.json()) to conver it into json
+                //since .json() is also an Async task so it also kind of returns a promise which when resolved then we call .then
+                //and we log the actual value
+                //here we use the methodology of promise chaining 
+                //Keep in mind that in FETCH ->We use 2 .then and 2 Async operation is carried out.....
+                .then(data=>{
+                    console.log(data);
+                    document.querySelector("#post").innerHTML=data.body;
+                    //just like we saw in the linked in that how things are carried out on sccrolling 
+                    //in the backend we do this .... we make fetch call and then async fetch is carried out and then
+                    // we see this working out like the fetched data/posts are posted on screen using DOM manipulation
+                    console.log("after the fetch operation has been done");
+                })
+            }
+            getRecentPost();
+    </script>
+    
+</body>
+</html>

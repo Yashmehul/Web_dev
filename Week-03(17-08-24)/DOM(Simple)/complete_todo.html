@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="complete_todo.css">
+</head>
+<body>
+    <h1 style="color: aliceblue;">Todo List</h1>
+    <div id="todos" style="display: block;justify-content: center;">
+        <div id="todo-1">
+            <h4>1. Take class</h4>
+            <button onclick="deleteTodo(1)">Delete</button>
+        </div>
+        <div id="todo-2">
+            <h4>2. Go to Gym </h4>
+            <button onclick="deleteTodo(2)">Delete</button>
+        </div>
+        <div id="todo-3">
+            <h4>3. GO for Run</h4>
+            <button onclick="deleteTodo(3)">Delete</button>
+        </div>
+    </div>
+        <div style="padding-top: 15px;">
+            <input id="inp" type="text" placeholder="Enter the task that you want to add">
+            <button onclick="add_todo()">Add Todo</button>
+        </div>
+
+        <script src="complete_todo.js">
+          
+        </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter the task!">
+    <button onclick="add_todo()">Add Task</button>
+    <button onclick="deleteLastTodo()">Delete Last todo</button>
+    <button onclick="deleteFirstTodo()">Delete First todo</button>
+    <div id="todoss"></div>
+    <script>
+        document.querySelector("input").addEventListener("keydown",function(event){
+            if(event.key==="Enter"){
+                add_todo();
+            }
+        });
+        let todos=[]
+        let ctr=1;
+        function add_todo(){
+            todos.push({
+               title: document.querySelector("input").value
+            })
+            render();
+            document.querySelector("input").value="";
+            
+        }
+
+        function add_component(todo,index){
+            const div=document.createElement("div");
+            const h3=document.createElement("h3");
+            const button=document.createElement("button");
+            h3.innerHTML=todo.title;
+            button.innerHTML="Delete";
+            button.onclick=()=>del(index);
+            div.appendChild(h3);
+            div.appendChild(button);
+            return div;
+        }
+        function del(index){
+            todos.splice(index,1);
+            render();
+        }
+        function render(){
+            document.querySelector("#todoss").innerHTML="";
+            for(let i=0;i<todos.length;i++){
+                const element=add_component(todos[i],i);
+                //hr baar ek task ek div bnke return hoga aur wo main parent mei append hoga 
+                //bss yhi dhyaan rkho most importantly......
+                document.querySelector("#todoss").appendChild(element);
+                //yhi portion jo hai rendering kaa yhi krta hai 
+                //react so when using react to manage the DOM we will
+                //only code the state part jo ki fornt end laaega
+                //fetch krke and then we will write component part
+                //aur rendering react khud krr lega
+            }
+           
+        }
+        function deleteLastTodo(){
+            todos.splice(todos.length-1,1);
+            render();
+        }
+
+        function deleteFirstTodo(){
+            todos.splice(0,1);
+            render();
+        }
+    </script>
+    
+</body>
+</html>

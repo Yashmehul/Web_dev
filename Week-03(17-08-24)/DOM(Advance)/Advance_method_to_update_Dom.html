@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter the task!">
+    <button onclick="add_to()"> Add todo</button>
+    <script>
+        let todo=[];
+        function add_todo(){
+            todo.push({
+            title:document.querySelector("input").value})
+            render();
+        }
+
+        function render(){
+            const newDivEl=document.createElement("div");
+            newDivEl.innerHTML=todo
+        }
+    </script>
+</body>
+</html>

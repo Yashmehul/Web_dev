@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .todo{
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="todo" id="todo1">Todo List</h1>
+    <h4 class="todo" id="todo2">1.Take Class</h4>
+    <h4 class="todo" id="todo3">2.Go to gym</h4>
+    <h4 class="todo" id="todo4">Self Study</h4>
+    <div>
+        <input type="text" placeholder="Add the todo here">
+        <button id="btn" onclick="log_todo()">Add Todo</button>
+        <!-- id ko reapeat mtt kiya krna wo standard usecase defined hai -->
+    </div>
+    <script>
+        function log_todo(){
+            const inputEl=document.querySelectorAll('input');
+            const val=inputEl.values;
+            console.log(val);
+        }
+        
+    </script>
+    
+</body>
+</html>
